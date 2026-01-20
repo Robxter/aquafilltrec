@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Aquafiltrec" />
+  <title>Aquafiltrec</title>
+
+  <!-- Favicons -->
+  <link rel="icon" href="assets/images/favicon/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="assets/images/favicon/site.webmanifest">
+
+  <!-- Reuse your global CSS (adjust path if your file is elsewhere) -->
+  <link rel="stylesheet" href="dependencies/css/styles.css" />
+
+  <!-- Minimal splash-only styles (kept here so you don't have to change styles.css) -->
+  <style>
+    :root{
+      --splash-bg-1:#f7fbff;
+      --splash-bg-2:#ffffff;
+      --splash-ink:#0b1622;
+      --splash-muted:#5a6b7c;
+      --splash-brand:#1b78c6;
+    }
+
+    body{
+      min-height:100svh;
+      display:grid;
+      place-items:center;
+      padding:28px;
+      background:
+        radial-gradient(900px 600px at 80% -10%, rgba(79,176,232,.20), transparent 60%),
+        radial-gradient(900px 600px at 10% 10%, rgba(27,120,198,.10), transparent 55%),
+        linear-gradient(180deg, var(--splash-bg-1) 0%, var(--splash-bg-2) 100%);
+    }
+
+    .splash{
+      width:min(820px, 100%);
+      text-align:center;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(17, 34, 52, .10);
+      border-radius: 22px;
+      box-shadow: 0 18px 46px rgba(12, 28, 45, .12);
+      padding: 34px 22px 30px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .splash::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(520px 260px at 30% 0%, rgba(79,176,232,.22), transparent 60%),
+        radial-gradient(520px 320px at 90% 30%, rgba(27,120,198,.12), transparent 60%);
+      pointer-events:none;
+    }
+
+    .splash > *{ position:relative; }
+
+    .logo-wrap{
+      display:grid;
+      place-items:center;
+      gap: 16px;
+      padding: 10px 0 6px;
+    }
+
+    .logo{
+      width: min(320px, 72vw);
+      height:auto;
+      filter: drop-shadow(0 12px 26px rgba(15,78,138,.18));
+      transform-origin:center;
+      opacity:0;
+      transform: translateY(10px) scale(.96);
+      animation: logoIn 1050ms cubic-bezier(.2,.8,.2,1) 150ms forwards;
+    }
+
+    .tagline{
+      margin: 6px auto 0;
+      font-family: "Playfair Display", ui-serif, Georgia, "Times New Roman", serif;
+      font-weight: 700;
+      color: var(--splash-ink);
+      font-size: clamp(20px, 2.6vw, 30px);
+      letter-spacing: .3px;
+      line-height: 1.2;
+      opacity:0;
+      transform: translateY(8px);
+      animation: textIn 900ms cubic-bezier(.2,.8,.2,1) 650ms forwards;
+    }
+
+    .sub{
+      margin: 10px auto 0;
+      max-width: 52ch;
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--splash-muted);
+      font-size: 14px;
+      opacity:0;
+      animation: fadeOnly 800ms ease-out 950ms forwards;
+    }
+
+    .pulse{
+      position:absolute;
+      inset:auto auto -260px -260px;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle at 40% 40%, rgba(79,176,232,.22), transparent 60%);
+      filter: blur(2px);
+      animation: floaty 6.5s ease-in-out 1.2s infinite;
+      pointer-events:none;
+    }
+
+    @keyframes logoIn{
+      from{ opacity:0; transform: translateY(10px) scale(.96); }
+      to{ opacity:1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes textIn{
+      from{ opacity:0; transform: translateY(8px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+
+    @keyframes fadeOnly{
+      from{ opacity:0; }
+      to{ opacity:1; }
+    }
+
+    @keyframes floaty{
+      0%,100%{ transform: translate(0,0); }
+      50%{ transform: translate(40px, -30px); }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .logo, .tagline, .sub, .pulse{
+        animation:none !important;
+        opacity:1 !important;
+        transform:none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="splash" aria-label="Aquafiltrec">
+    <div class="pulse" aria-hidden="true"></div>
+
+    <div class="logo-wrap">
+      <img
+        class="logo"
+        src="assets/images/logos/aquafiltrec.jpg"
+        alt="Logo de Aquafiltrec"
+        decoding="async"
+        loading="eager"
+      />
+      <h1 class="tagline">El futuro se está construyendo aquí</h1>
+      <p class="sub">Tratamiento de agua • Filtración • Mantenimiento • Machala, Ecuador</p>
+    </div>
+  </main>
+</body>
+</html>
