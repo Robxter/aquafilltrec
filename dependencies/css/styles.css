@@ -637,3 +637,93 @@ input:focus, textarea:focus{
   *{scroll-behavior:auto !important}
   .btn,.feature{transition:none !important}
 }
+
+/* ---- Splash page (index.html) ---- */
+.splash {
+  width: min(820px, 100%);
+  text-align: center;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+  padding: 34px 22px 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.splash::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background:
+    radial-gradient(520px 260px at 30% 0%, rgba(79, 176, 232, 0.22), transparent 60%),
+    radial-gradient(520px 320px at 90% 30%, rgba(27, 120, 198, 0.12), transparent 60%);
+  pointer-events: none;
+}
+
+.splash > * {
+  position: relative;
+}
+
+.logo-wrap {
+  display: grid;
+  place-items: center;
+  gap: 16px;
+  padding: 10px 0 6px;
+}
+
+.logo {
+  width: min(320px, 72vw);
+  height: auto;
+  filter: drop-shadow(0 12px 26px rgba(15, 78, 138, 0.18));
+  transform-origin: center;
+  opacity: 0;
+  transform: translateY(10px) scale(0.96);
+  animation: logoIn 1050ms var(--ease) 150ms forwards;
+}
+
+.tagline {
+  margin: 6px auto 0;
+  font-family: var(--font-brand);
+  font-weight: 700;
+  color: var(--ink);
+  font-size: clamp(20px, 2.6vw, 30px);
+  letter-spacing: 0.3px;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: textIn 900ms var(--ease) 650ms forwards;
+}
+
+.sub {
+  margin: 10px auto 0;
+  max-width: 52ch;
+  font-family: var(--font-ui);
+  color: var(--muted);
+  font-size: 14px;
+  opacity: 0;
+  animation: fadeOnly 800ms ease-out 950ms forwards;
+}
+
+.pulse {
+  position: absolute;
+  inset: auto auto -260px -260px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle at 40% 40%, rgba(79, 176, 232, 0.22), transparent 60%);
+  filter: blur(2px);
+  animation: floaty 6.5s ease-in-out 1.2s infinite;
+  pointer-events: none;
+}
+
+@keyframes logoIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
